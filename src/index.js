@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 
 const app = express();
 app.use(express.json());
-app.get("/", (req, res) => {
+app.post("/", (req, res) => {
   // create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
     host: "smtp.elasticemail.com",
