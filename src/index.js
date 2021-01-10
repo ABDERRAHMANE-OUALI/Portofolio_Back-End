@@ -24,7 +24,7 @@ app.post("/", (req, res) => {
   console.log(payload);
   try {
     // send mail with defined transport object
-    const info = transporter
+    transporter
       .sendMail({
         from: "abdearrahmaneouali05@gmail.com", // sender address
         to: "alexabde01@gmail.com", // list of receivers
@@ -34,7 +34,7 @@ app.post("/", (req, res) => {
 
         // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
       })
-      .then(() => res.send(`Message sent: ${info.messageId}`));
+      .then((info) => res.send(`Message sent: ${info.messageId}`));
   } catch (error) {
     res.status(500).send("Error has occurred");
   }
