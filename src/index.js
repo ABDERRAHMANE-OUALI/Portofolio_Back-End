@@ -5,11 +5,10 @@ const cors = require("cors");
 
 
 const app = express();
-app.use(cors());
 app.use(express.json());
 
 
-app.post("/", (req, res) => {
+app.post("/", cors(), (req, res) => {
   // create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
     host: "smtp.elasticemail.com",
