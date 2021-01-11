@@ -1,12 +1,20 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
-const cors = require("cors");
+// const cors = require("cors");
 
 
 
 const app = express();
-app.use(cors());
-app.options("*", cors());
+// app.use(cors());
+
+// app.options("*", cors());
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:8000/");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+  // res.header("Access-Control-Request-Headers", "content-type");
+  next();
+});
+
 app.use(express.json());
 
 app.post("/", (req, res) => {
