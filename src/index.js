@@ -40,8 +40,8 @@ app.post("/", (req, res) => {
       // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
       .then((info) => {
         res.send(`Message sent: ${info}`);
-        res.header("Access-Control-Allow-Origin", "http://localhost:8000");
-        res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+        res.setHeader("Access-Control-Allow-Origin", "http://localhost:8000");
+        res.setHeader("Access-Control-Allow-Methods", "GET, PUT, POST");
         res.setHeader(
           "Access-Control-Allow-Headers",
           "X-Requested-With,content-type"
