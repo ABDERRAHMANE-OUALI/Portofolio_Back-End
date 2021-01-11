@@ -9,7 +9,7 @@ const app = express();
 
 // app.options("*", cors());
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8000/");
+  res.header("Access-Control-Allow-Origin", "http://localhost:8000");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
   res.header("Access-Control-Request-Headers", "content-type");
   next();
