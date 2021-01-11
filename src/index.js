@@ -6,23 +6,16 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
-var corsMiddleware = function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8000"); //replace localhost with actual host
-  res.header(
-    "Access-Control-Allow-Methods",
-    "OPTIONS, GET, PUT, PATCH, POST, DELETE"
-  );
-  res.header(
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
     "Access-Control-Allow-Headers",
-    "Content-Type, X-Requested-With, Authorization"
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
 
   next();
-};
-
-app.use(corsMiddleware);
-
+});
 
 
 app.post("/", (req, res) => {
