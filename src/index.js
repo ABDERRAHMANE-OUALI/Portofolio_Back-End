@@ -1,8 +1,14 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
+const cors = require("cors");
+
+
 
 const app = express();
+app.use(cors());
 app.use(express.json());
+
+
 app.post("/", (req, res) => {
   // create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
@@ -31,10 +37,9 @@ app.post("/", (req, res) => {
         subject: payload.subject, // Subject line
         text: "", // plain text body
         html: `<b>${payload.message}</b>`, // html body
-
-        // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
       })
-      .then((info) => res.send(`Message sent: ${info}`));
+      // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+      .then((info) => res.send(`Message sent: ${info}`).header());
   } catch (error) {
     res.status(500).send("Error has occurred");
   }
