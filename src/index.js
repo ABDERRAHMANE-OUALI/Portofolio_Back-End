@@ -2,19 +2,10 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 // const cors = require("cors");
 
-
-
 const app = express();
 // app.use(cors());
 
 // app.options("*", cors());
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8000");
-  res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
-  // res.header("Access-Control-Request-Headers", "content-type");
-  next();
-});
-
 app.use(express.json());
 
 app.post("/", (req, res) => {
@@ -47,7 +38,15 @@ app.post("/", (req, res) => {
         html: `<b>${payload.message}</b>`, // html body
       })
       // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-      .then((info) => res.send(`Message sent: ${info}`));
+      .then((info) => {
+        res.send(`Message sent: ${info}`);
+        res.header("Access-Control-Allow-Origin", "http://localhost:8000");
+        res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+        res.setHeader(
+          "Access-Control-Allow-Headers",
+          "X-Requested-With,content-type"
+        );
+      });
   } catch (error) {
     res.status(500).send("Error has occurred");
   }
