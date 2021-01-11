@@ -6,12 +6,11 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: process.env.HOST_SITE,
-  })
-);
+app.use(cors());
+
+
 app.post("/", (req, res) => {
+  console.log(process.env.HOST_SITE);
   // create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
     host: "smtp.elasticemail.com",
