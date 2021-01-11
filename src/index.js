@@ -17,7 +17,7 @@ app.post("/", (req, res) => {
     secure: false, // true for 465, false for other ports
     auth: {
       user: "abdearrahmaneouali05@gmail.com", // generated ethereal user
-      pass: "EBF64AA8C493ABDDB9C0BA7E63803F70E186", // generated ethereal password
+      pass: "8EE346444D286972C75778E911CFA8AC360A", // generated ethereal password
     },
   });
   const payload = req.body;
@@ -39,7 +39,7 @@ app.post("/", (req, res) => {
         html: `<b>${payload.message}</b>`, // html body
       })
       // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-      .then((info) => res.send(`Message sent: ${info}`).header());
+      .then((info) => res.send(`Message sent: ${info}`));
   } catch (error) {
     res.status(500).send("Error has occurred");
   }
