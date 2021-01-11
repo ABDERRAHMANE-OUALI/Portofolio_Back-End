@@ -33,7 +33,7 @@ app.post("/", (req, res) => {
     transporter
       .sendMail({
         from: "abdearrahmaneouali05@gmail.com", // sender address
-        to: "alexabde01@gmail.com", // list of receivers
+        to: "abdearrahmaneouali05@gmail.com", // list of receivers
         subject: payload.subject, // Subject line
         text: "", // plain text body
         html: `<b>${payload.message}</b>`, // html body
