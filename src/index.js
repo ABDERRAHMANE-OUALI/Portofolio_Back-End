@@ -13,7 +13,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "access-control-allow-origin,content-type"
   );
   next();
 });
